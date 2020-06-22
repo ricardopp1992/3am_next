@@ -2,7 +2,14 @@
 
 body {
   height: 200vh;
+
+  main {
+    position: relative;
+    margin-top: 20vh;
+    display: inline-block;
+  }
 }
+
 
 a {
   font-family: 'Viga', sans-serif;
