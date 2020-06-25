@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
-const useScroll = (onTop: boolean) => {
+const useScroll = (onTop: boolean, edge: number) => {
   const [stickyMenu, setSticky] = useState(onTop);
 
   const triggerScrollPositon = () => {}
 
   useEffect(() => {
     window.addEventListener('scroll', (event) => {
-      if (window.scrollY < 150 && !onTop) {
+      if (window.scrollY < edge && !onTop) {
         setSticky(false);
       }
-      if (window.scrollY > 150 && onTop) {
+      if (window.scrollY > edge && onTop) {
         setSticky(true);
       }
     });

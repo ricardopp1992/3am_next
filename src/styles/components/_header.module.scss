@@ -1,7 +1,7 @@
-.header {
+.common {
   background-color: black;
-  width: 100vw;
   padding-top: 1rem;
+  width: 100vw;
   position: fixed;
   top: 0;
   z-index: 100;
@@ -16,8 +16,7 @@
       color: #fff;
     }
 
-    .logo {
-      width: 10rem;
+    img {
       margin: 0px 2rem;
       transition: all ease 1s;
 
@@ -25,6 +24,32 @@
   }
 }
 
-.title {
-  color: rebeccapurple;
+@media only screen and (min-width: 501px) {
+  .header {
+    height: 20vh;
+
+    .logo {
+      width: 10rem;
+    }
+  }
+
+  .stickyHeader {
+    height: 15vh;
+    background-color: #142126 !important;
+
+    .logo {
+      width: 8rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .header {
+    position: initial;
+    height: 13vh;
+
+    .logo {
+      width: 5rem !important;
+    }
+  }
 }

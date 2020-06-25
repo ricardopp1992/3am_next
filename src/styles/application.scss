@@ -2,15 +2,18 @@
 
 body {
   height: 200vh;
+  background-color: black;
 
   main {
     position: relative;
     margin-top: 20vh;
     display: inline-block;
+    width: 100%;
   }
 }
 
 
 a {
   font-family: 'Viga', sans-serif;
+  color: #fff;
 }
