@@ -1,0 +1,12 @@
+.socialMedia {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    width: 20%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 0;
+  }
+}
