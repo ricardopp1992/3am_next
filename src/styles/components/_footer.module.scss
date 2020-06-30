@@ -1,0 +1,65 @@
+.footer{
+  background-color:#142126;
+  padding-top: 1rem;
+}
+
+.container{
+  bottom: 0;
+
+  .logoSV{
+    padding: 1rem;
+  }
+
+  .mapSite{
+    border-bottom: 1px solid white;
+  }
+
+  .termCond{
+    h6 {
+      margin-bottom: 0px;
+    }
+    // font-size: x-small;
+  }
+  .SocialMedia{
+    display: grid;
+  }
+
+}
+
+@media only screen and (max-width: 770px) {
+  .logo3Am {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .logoSV {
+    display: block;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .list{
+    display: block;
+    width: auto;
+  }
+
+  .SocialMedia{
+    display: grid;
+    width: auto;
+    margin-left:auto;
+  }
+
+  .iconIg{
+    margin-top: 5px;
+  }
+
+  .mapSite{
+    border-bottom: 1px solid white;
+   }
+
+   .termCond{
+    font-size: xx-small;
+  }
+
+}

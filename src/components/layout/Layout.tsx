@@ -1,9 +1,11 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Head from "next/head";
 
+
 import MainMenu from "./main-menu/MainMenu";
 import MobileMenu from "./main-menu/MobileMenu";
 import styles from '../../styles/components/_layout.module.scss';
+import Footer from "./footer/Footer"
 
 const Layout: FunctionComponent = ({children}) => {
   const [isMobile, setMobile] = useState(false);
@@ -23,9 +25,7 @@ const Layout: FunctionComponent = ({children}) => {
       <main>
         { children }
       </main>
-      <footer>
-
-      </footer>
+      <Footer />
     </>
   );
 }

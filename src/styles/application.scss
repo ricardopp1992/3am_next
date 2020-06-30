@@ -1,19 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
 
-body {
-  height: 200vh;
-  background-color: black;
-
-  main {
-    position: relative;
-    margin-top: 20vh;
-    display: inline-block;
-    width: 100%;
-  }
+main {
+  position: relative;
+  margin-top: 20vh;
+  display: inline-block;
+  width: 100vw;
 }
-
 
 a {
   font-family: 'Viga', sans-serif;
-  color: #fff;
+  color: white;
+}
+
+h6, p {
+  font-family: 'Viga', sans-serif;
+  color: white;
 }
