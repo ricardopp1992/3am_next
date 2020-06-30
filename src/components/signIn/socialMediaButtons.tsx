@@ -29,7 +29,7 @@ const  SocialMediaButtons: FunctionComponent<IConnectTo> = ({connectTo}) => {
 }
 
 interface IConnectTo {
-  connectTo: Functions;
+  connectTo: Function;
 }
 
 export default SocialMediaButtons

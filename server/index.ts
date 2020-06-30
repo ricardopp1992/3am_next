@@ -44,12 +44,12 @@ setTwitterStrategy(passport);
     /** ROUTES */
     server.post('/auth', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }));
     server.use('/oauth', authSocialRoutes);
-  
+
     /** NEXT JS */
     server.all('*', (req: Request, res: Response, next: NextFunction) => {
       return handler(req, res);
     })
-  
+
     server.listen(PORT, () => console.log(`Custom Next server listening on ${PORT}`));
   } catch (err) {
     console.error(err);

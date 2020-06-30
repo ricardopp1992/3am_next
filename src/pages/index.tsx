@@ -2,7 +2,7 @@ import Layout from '../components/layout/Layout';
 import SEO from '../components/SEO';
 import styles from '../styles/components/_header.module.scss';
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout>
       <SEO title="Home" />
@@ -20,3 +20,5 @@ export default function Home() {
     </Layout>
   );
 }
+
+export default Home;

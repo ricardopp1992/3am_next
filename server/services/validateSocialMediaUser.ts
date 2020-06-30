@@ -1,4 +1,4 @@
-const Users = [{ email: 'ricardopp1992@gmail.com', id: 1 }];
+const Users = [{ email: 'ricardopp1992@gmail.com', id: 1 }, { email: 'divirgiliocamila@outlook.com.ar', id: 2 }];
 
 function validateSocialMediaUser(
   token: string,

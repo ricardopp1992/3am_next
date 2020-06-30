@@ -2,6 +2,8 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { PassportStatic } from 'passport';
 
 const Users = ['ricardo', 'perez', 'paredes', 'mi niña linda'];
+const UsersObject = [{ email: 'ricardopp1992@gmail.com', id: 1 }];
+
 
 function setLocalStrategy(passport: PassportStatic) {
   passport.use(new LocalStrategy(
@@ -22,7 +24,11 @@ function setLocalStrategy(passport: PassportStatic) {
     /** 
      * TODO: find the use on the database and retreive user;
     */
-    return done(null, serializedUser);
+    const user = UsersObject.find(({id}) => id === serializedUser)
+    if (user) {
+      return done(null, user);
+    }
+    return done(null, false);
   });
 }
 

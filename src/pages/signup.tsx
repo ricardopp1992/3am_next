@@ -1,11 +1,12 @@
 import SignUpMobile from '../components/signup/signupMobile'
 import SignUpDesktop from '../components/signup/signUpDesktop'
 
-export default function Signup() {
+const Signup = () => {
   return (
   <>
     <SignUpDesktop/>
   </>
-  )
+  );
 }
 
+export default Signup;
