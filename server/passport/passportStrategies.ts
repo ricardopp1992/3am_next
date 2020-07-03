@@ -2,8 +2,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { PassportStatic } from 'passport';
 
 const Users = ['ricardo', 'perez', 'paredes', 'mi niña linda'];
-const UsersObject = [{ email: 'ricardopp1992@gmail.com', id: 1 }];
-
+const UsersObject = [{ email: 'ricardopp1992@gmail.com', id: 'ricardo' }];
 
 function setLocalStrategy(passport: PassportStatic) {
   passport.use(new LocalStrategy(
@@ -11,7 +10,7 @@ function setLocalStrategy(passport: PassportStatic) {
       if (Users.find(u => u === username)) {
         return done(null, username);
       } else {
-        return done(null, false);
+        return done(null, false, { message: 'wrong credentials' });
       }
     }
   ));

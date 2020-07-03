@@ -1,5 +1,4 @@
 .container {
-  
   .img {
     padding-top: 1rem;
     display: grid;
@@ -30,12 +29,17 @@
       color: white;
     }
 
+    label {
+      color: #fff;
+    }
+
     button {
       width: 50%;
       height: 30px;
       border: none;
       border-radius: 5px;
-      margin: 1rem 5rem;
+      margin: 1rem auto;
+      display: block;
     }
   }
 

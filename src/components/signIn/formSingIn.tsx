@@ -1,37 +1,54 @@
-import { FunctionComponent } from 'react'
-import SocialMediaButtons from '../signIn/socialMediaButtons' 
-import { Container, Form, FormGroup, FormLabel, FormControl, Row } from 'react-bootstrap'
-import styles from '../../styles/components/_formsignIn.module.scss'
+import { FunctionComponent, useContext } from 'react';
+import { Container, Form, FormGroup, FormLabel, FormControl } from 'react-bootstrap';
+import Link from 'next/link';
+
+import styles from '../../styles/components/_formsignIn.module.scss';
+import SocialMediaButtons from '../signIn/socialMediaButtons';
+import { FlashErrorContext } from '../../context/flashErrorContext';
+import { IFlashError } from '../../../interfaces/models/user.interface';
 
 const  FormSignIn: FunctionComponent = () => {
+  const flashError: IFlashError = useContext(FlashErrorContext);
   const FormInfo = [
-    {name: 'email', label: 'Write your email', type: 'email', placeholder:'Ingrese email'},
-    {name: 'password', label: 'Create your password', type: 'password', placeholder:'Ingrese password'},
-  ]
+    {name: 'username', label: 'Enter your email', type: 'text', placeholder:'email'},
+    {name: 'password', label: 'Enter your password', type: 'password', placeholder:'password'},
+  ];
 
   const signIn = (socialMedia: string) => {
     console.log(socialMedia);
   }
 
-  const handle = (event) => {
-    event.preventDefault();
-    console.log(event.currentTarget.name.value);
-    console.log(event.currentTarget.email.value);
-    console.log(event.currentTarget.password.value);
-    console.log(event.currentTarget.repeatPassword.value);
+  const authenticateUser = (event) => {
+    const username = event.currentTarget.username.value;
+    const password = event.currentTarget.password.value;
+
+    if (!username || !password) {
+      event.preventDefault();
+      console.log('credential missing');
+    }
   }
 
   return(
     <Container className={styles.container}>
-      <img className={styles.img} width={100} src="/image/3am_logo_black.png" alt="3a Logo" />
+      <Link href="/">
+        <a><img className={styles.img} width={100} src="/image/3am_logo_black.png" alt="3a Logo" /></a>
+      </Link>
       <div className={styles.text}>
         <h6 className={styles.color}>SIGN In</h6>
         <p className={styles.color}>with your social network</p>
       </div>
       <SocialMediaButtons connectTo={signIn}/>
       <span className={styles.lineDesktop}/>
-      <Form onSubmit={handle} className={styles.Form}>
-         {
+      <Form
+        onSubmit={authenticateUser}
+        method="post"
+        action="/auth"
+        className={styles.signinForm}>
+        {
+          flashError.error.length > 0 &&
+          <span className={styles.flashMessage}>Your username or password are wrong, please sign in again!</span>
+        }
+        {
           FormInfo.map((info)=>(
             <FormGroup className={styles.ColorFont} key={info.name}>
               <FormLabel>{info.label}</FormLabel>
@@ -39,7 +56,6 @@ const  FormSignIn: FunctionComponent = () => {
             </FormGroup>
           ))
         }
-        <Form.Check type="checkbox" label="Acepto terminos y condiciones"/>
         <button type="submit">Sing In</button>
       </Form>
     </Container>

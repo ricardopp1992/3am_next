@@ -2,12 +2,12 @@ import { FunctionComponent, useEffect, useState } from "react";
 import Head from "next/head";
 
 
+import { ILayoutProps } from "../../../interfaces/components/ILayoutPops.interface";
 import MainMenu from "./main-menu/MainMenu";
 import MobileMenu from "./main-menu/MobileMenu";
-import styles from '../../styles/components/_layout.module.scss';
 import Footer from "./footer/Footer"
 
-const Layout: FunctionComponent = ({children}) => {
+const Layout: FunctionComponent<ILayoutProps> = ({children}) => {
   const [isMobile, setMobile] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Layout: FunctionComponent = ({children}) => {
       <Head>
         <link rel="icon" href="/3am_favicon.png" />
       </Head>
-      <MainMenu isMobile={isMobile} />
+        <MainMenu isMobile={isMobile} />
       { isMobile && <MobileMenu /> }
       <main>
         { children }
