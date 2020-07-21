@@ -1,0 +1,21 @@
+.historyImage {
+  display: block;
+  width: 45%;
+  margin: 1rem auto 3rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.history {
+  text-align: justify;
+  margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .historyImage {
+    width: 100%;
+    margin: 1rem auto;
+}
+}

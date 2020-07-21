@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from '../../../styles/components/_mobile-menu.module.scss';
 import HomeSvg from '../../../assets/home_icon.svg';
 import SearchSvg from '../../../assets/search_icon.svg';
-import UserSvg from '../../../assets/user_icon.svg';
+import UserLogged from './UserLogged';
 
 const MobileMenu: FunctionComponent = () => {
   const [isOpen, setOpen] = useState(false);
@@ -37,11 +37,9 @@ const MobileMenu: FunctionComponent = () => {
               <li>
                 <Link href="/"><a>Find <SearchSvg /></a></Link>
               </li>
-              <li>
-                <Link href="/"><a>Sign in <UserSvg /></a></Link>
-              </li>
-              <li>
-                <Link href="/"><a>Sign up <UserSvg /></a></Link>
+              <UserLogged mobile />
+              <li className={styles.toggleMode}>
+                  toggle
               </li>
             </ul>
             <img className={styles.logo} src="/image/3am_logo.png" alt="logo" />

@@ -5,12 +5,12 @@ import Link from 'next/link';
 import styles from '../../../styles/components/_header.module.scss';
 import useScroll from '../../../hooks/useScroll';
 import { UserContext } from '../../../context/UserContext';
+import UserLogged from './UserLogged';
 
 const MainMenu: FunctionComponent<IMainMenu> = ({ isMobile }) => {
   let onTop: boolean, setIsOnTop: Dispatch<SetStateAction<boolean>>, sticky: boolean;
   const edge: number = 50;
   const user = useContext(UserContext);
-  console.log('MainMenu', user);
 
   if (typeof window !== 'undefined') {
     [onTop, setIsOnTop] = useState(window.scrollY < edge);
@@ -37,14 +37,7 @@ const MainMenu: FunctionComponent<IMainMenu> = ({ isMobile }) => {
       { !isMobile && <Link href="/find"><a>FIND</a></Link>}
       <div className={styles.authButtons}>
       {
-        !isMobile && user
-        ?
-          <Link href="/logout"><a>Logout</a></Link>
-        :
-          <>
-            <Link href="/signin"><a>Sign in</a></Link>
-            <Link href="/signup"><a>Sign up</a></Link>
-          </>
+        !isMobile && <UserLogged />
       }
       </div>
       </Container>
