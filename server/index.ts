@@ -1,13 +1,19 @@
 import express, { Request, Response, NextFunction } from 'express';
 import session from 'express-session';
-import redis from 'redis';
 import next from 'next';
 import passport from 'passport';
 import bodyParser from 'body-parser';
 import flash from 'connect-flash';
+import axios from 'axios';
 const RedisStore = require('connect-redis')(session);
 
-import { NODE_ENV, PORT } from '../config';
+import {
+  NODE_ENV,
+  PORT,
+  STRAPI_CMS,
+  STRAPI_PASSWORD,
+  STRAPI_USER
+} from '../config';
 import { IHandlerServer } from '../interfaces/IServer';
 import setLocalStrategy from './passport/passportStrategies';
 import setFacebookStrategy from './passport/passportFacebook';
@@ -15,11 +21,13 @@ import setGoogleStrategy from './passport/passportGoogle';
 import authSocialRoutes from './routes/routes';
 import localRoutes from './routes/local.routes';
 import setTwitterStrategy from './passport/passportTwitter';
+import redisClient from './services/promisifyRedis';
+import { getRedis, setRedis } from './services/promisifyRedis';
 
 const dev = NODE_ENV !== 'production';
 const app = next({dev});
 const handler: IHandlerServer = app.getRequestHandler();
-const redisClient = redis.createClient('redis://localhost:6379');
+
 
 setLocalStrategy(passport);
 setFacebookStrategy(passport);
@@ -43,6 +51,21 @@ setTwitterStrategy(passport);
     server.use(passport.initialize());
     server.use(passport.session());
     server.use(flash());
+    server.use(async (req, res, next) => {
+      try {
+        const strapiUserToken = await getRedis('strapiUserToken');
+        if (!strapiUserToken) {
+          const { data } = await axios.post(`${STRAPI_CMS}/auth/local`, {
+            identifier: STRAPI_USER,
+            password: STRAPI_PASSWORD
+          });
+          await setRedis('strapiUserToken', data.jwt);
+        }
+      } catch (err) {
+        console.error('Error: ', err.message);
+      }
+      next();
+    });
 
     /** ROUTES */
     server.use('/', localRoutes);

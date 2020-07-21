@@ -1,13 +1,11 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Head from "next/head";
 
-
-import { ILayoutProps } from "../../../interfaces/components/ILayoutPops.interface";
 import MainMenu from "./main-menu/MainMenu";
 import MobileMenu from "./main-menu/MobileMenu";
 import Footer from "./footer/Footer"
 
-const Layout: FunctionComponent<ILayoutProps> = ({children}) => {
+const Layout: FunctionComponent = ({children}) => {
   const [isMobile, setMobile] = useState(false);
 
   useEffect(() => {
@@ -22,7 +20,7 @@ const Layout: FunctionComponent<ILayoutProps> = ({children}) => {
       </Head>
         <MainMenu isMobile={isMobile} />
       { isMobile && <MobileMenu /> }
-      <main>
+      <main style={{ width: '100%' }}>
         { children }
       </main>
       <Footer />
