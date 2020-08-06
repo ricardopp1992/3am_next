@@ -5,21 +5,24 @@ import 'bootstrap/scss/bootstrap.scss';
 import 'bootstrap/scss/bootstrap-grid.scss';
 import '../styles/application.scss';
 import { UserContext } from '../context/UserContext';
+import { getIsMobile } from '../util/is-mobile-user-agent';
 
-function MyApp({ Component, pageProps, user }) {
+
+function MyApp({ Component, pageProps, user, isMobile }) {
   
   return (
     <UserContext.Provider value={user}>
-      <Component {...pageProps} user={user} />
+      <Component {...pageProps} user={user} isMobile={isMobile} />
     </UserContext.Provider>
   );
 }
 
 MyApp.getInitialProps = async (appContext: AppContextType) => {
   const { ctx } = appContext;
+  const isMobile: boolean = getIsMobile(ctx.req);
   const req: IAppIncommingMessage = ctx.req;
   if (!req.user) {
-    return {};
+    return { isMobile };
   }
 
   const user = {
@@ -27,7 +30,7 @@ MyApp.getInitialProps = async (appContext: AppContextType) => {
     displayName: req.user.displayName
   }
 
-  return { user };
+  return { user, isMobile };
 }
 
 export default MyApp;

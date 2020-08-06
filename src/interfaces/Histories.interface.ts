@@ -1,6 +1,12 @@
 export interface IHistoryProps {
   history: IHistory;
   url: string;
+  isMobile?: boolean;
+}
+
+export interface IHistoryDescriptionProps {
+  url: string;
+  history: IHistory;
 }
 
 export interface IHistory {

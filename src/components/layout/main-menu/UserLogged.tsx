@@ -17,10 +17,10 @@ const UserLogged: FunctionComponent<IUserLoggedProps> = ({ mobile }) => {
       return (
         <>
           <li>
-            <Link href="/"><a>Sign in <UserSvg /></a></Link>
+            <Link href="/sign-in"><a>Sign in <UserSvg /></a></Link>
           </li>
           <li>
-            <Link href="/"><a>Sign up <UserSvg /></a></Link>
+            <Link href="/sign-up"><a>Sign up <UserSvg /></a></Link>
           </li>
         </>
       );
@@ -33,8 +33,8 @@ const UserLogged: FunctionComponent<IUserLoggedProps> = ({ mobile }) => {
     } else {
       return (
         <>
-          <Link href="/signin"><a>Sign in</a></Link>
-          <Link href="/signup"><a>Sign up</a></Link>
+          <Link href="/sign-in"><a>Sign in</a></Link>
+          <Link href="/sign-up"><a>Sign up</a></Link>
         </>
       );
     }

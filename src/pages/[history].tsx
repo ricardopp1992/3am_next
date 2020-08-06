@@ -10,10 +10,11 @@ import { fetchHistoriesAndGetBySlug } from '../services/histories.services';
 import { getHistoryById } from '../services/fetchHistories.services';
 import { IHistoryProps } from '../interfaces/Histories.interface';
 import { STRAPI_CMS } from '../../config';
+import RelatedHistories from '../components/related-articles/RelatedHistories';
 
 const converter = new Shodown.Converter();
 
-const History: NextPage<IHistoryProps> = ({ history, url }) => {
+const History: NextPage<IHistoryProps> = ({ history, url, isMobile }) => {
   const [historyHtml, setHtml] = useState('');
 
   useEffect(() => {
@@ -22,13 +23,15 @@ const History: NextPage<IHistoryProps> = ({ history, url }) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout isMobile={isMobile}>
       <Container>
         <img className={styles.historyImage} src={`${url}${history.imageArticle[0].url}`} />
         <h3 className={styles.title}>{ history.title }</h3>
         <p
           className={styles.history}
           dangerouslySetInnerHTML={{ __html: historyHtml }} />
+
+          <RelatedHistories articles={[]} />
       </Container>
     </Layout>
   );
