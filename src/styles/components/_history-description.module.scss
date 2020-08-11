@@ -1,9 +1,44 @@
 @media only screen and (max-width: 700px ) {
-  .historyDescription {
-    width: 100%;
-
-    img {
-      width: 80%;
-    }
+  .content{
+    padding-left: 2rem;
+  }
+  .img {
+    width: 20rem;
+  }
+  .modal{
+    flex-flow: wrap;
+  }
+  .description{
+    margin-left: 3rem;
   }
 }
+
+
+.content{
+  margin-top: 3rem;
+}
+.modal{
+  display: flex;
+}
+.img {
+  width: 25%;
+  margin-left: 12rem;
+  
+}
+
+.description{
+  margin-left: 3rem;
+  margin-top: 10rem;
+}
+
+.seeMore{
+    float: right;
+    margin-right: 17rem;
+    width: 10rem;
+    border-radius: 10px;
+    background-color: slategrey;
+    color: azure;
+    height: 44px;
+
+}
+

@@ -29,7 +29,7 @@ const History: NextPage<IHistoryProps> = ({ history, url, isMobile }) => {
         <h3 className={styles.title}>{ history.title }</h3>
         <p
           className={styles.history}
-          dangerouslySetInnerHTML={{ __html: historyHtml }} />
+          dangerouslySetInnerHTML={{ __html: historyHtml }}/>
 
           <RelatedHistories articles={[]} />
       </Container>

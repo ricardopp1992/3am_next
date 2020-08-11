@@ -21,17 +21,6 @@ const Home: NextPage<IHomeProps> = ({ isMobile, histories, url }) => {
         histories.map((history, index) =>
           <HistoryDescription key={index} url={url} history={history} />)
       }
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
-      <h1 className={styles.title}>HELLO</h1>
     </Layout>
   );
 }
